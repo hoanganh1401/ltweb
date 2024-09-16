@@ -1,6 +1,7 @@
 package vn.iotstar.dao.Impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -28,8 +29,9 @@ public class UserDaoImpl extends DBConnectSQL implements IUserDao {
 				list.add(new UserModel(rs.getInt("id"), rs.getString("username"), rs.getString("password"),
 						rs.getString("images"), rs.getString("fullname"), rs.getString("email"), rs.getString("phone"),
 						rs.getInt("roleid"), rs.getDate("createDate")));
-				return list;
+				
 			}
+			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -84,6 +86,7 @@ public class UserDaoImpl extends DBConnectSQL implements IUserDao {
 			e.printStackTrace();
 		}
 	}
+
 
 	/*
 	 * public static void main(String[] args) { UserDaoImpl userDao = new
