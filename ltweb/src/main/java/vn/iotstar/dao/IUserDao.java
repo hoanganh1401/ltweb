@@ -13,4 +13,9 @@ public interface IUserDao {
 	void insert(UserModel user);
 
 	UserModel findByUserName(String username);
+	boolean checkExistEmail(String email);
+
+	boolean checkExistPhone(String phone);
+	
+	void updatePassword(String password, String email);
 }
