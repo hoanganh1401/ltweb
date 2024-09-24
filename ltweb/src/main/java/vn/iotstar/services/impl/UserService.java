@@ -1,5 +1,6 @@
 package vn.iotstar.services.impl;
-import java.util.Random;
+
+import java.sql.Date;
 
 import vn.iotstar.dao.IUserDao;
 import vn.iotstar.dao.Impl.UserDaoImpl;
@@ -7,77 +8,73 @@ import vn.iotstar.models.UserModel;
 import vn.iotstar.services.IUserService;
 
 public class UserService implements IUserService {
-    IUserDao userDao = new UserDaoImpl();
-    
+	IUserDao userDao = new UserDaoImpl();
 
 	@Override
 	public UserModel login(String username, String password) {
-		// TODO Auto-generated method stub
 		UserModel user = this.FindByUserName(username);
 		if (user != null && password.equals(user.getPassword())) {
-		return user;
+			return user;
 		}
 		return null;
+
 	}
 
 	@Override
 	public UserModel FindByUserName(String username) {
-		// TODO Auto-generated method stub
+
 		return userDao.findByUserName(username);
 	}
 
 	@Override
 	public void insert(UserModel user) {
-		// TODO Auto-generated method stub
 		userDao.insert(user);
+
 	}
 
 	@Override
-	public boolean register(String email, String password, String username, String fullname, String images,
-			String phone) {
-		if (userDao.checkExistPhone(phone)) {
-			return false;
+	public UserModel register(String username, String password, String email, String fullname, String phone) {
+		if (userDao.checkExistUsername(username)) {
+			return null;
 		}
-		UserModel user = new UserModel();
-		user.setEmail("email");
-		user.setUsername("username");
-		user.setFullname("fullname");
-		user.setPassword("password");
-		user.setImages("images");
-		user.setPhone("phone");
+		long millis = System.currentTimeMillis();
+		java.sql.Date date = new java.sql.Date(millis);
+		UserModel user = new UserModel(username, password, null, fullname, email, phone, 1, date);
 		userDao.insert(user);
-		return true;
-	}
-	public String RandomPassword() {
-	    int leftLimit = 48; // numeral '0'
-	    int rightLimit = 122; // letter 'z'
-	    int targetStringLength = 10;
-	    Random random = new Random();
-
-	    String generatedString = random.ints(leftLimit, rightLimit + 1)
-	      .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
-	      .limit(targetStringLength)
-	      .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-	      .toString();
-	    return generatedString;
+		return user;
 	}
 
 	@Override
 	public boolean checkExistEmail(String email) {
-		// TODO Auto-generated method stub
 		return userDao.checkExistEmail(email);
 	}
 
 	@Override
+	public boolean checkExistUsername(String username) {
+		return userDao.checkExistUsername(username);
+
+	}
+
+	@Override
 	public boolean checkExistPhone(String phone) {
-		// TODO Auto-generated method stub
 		return userDao.checkExistPhone(phone);
 	}
 
 	@Override
-	public void updatePassword(String password, String email) {
-		// TODO Auto-generated method stub
-		userDao.updatePassword(email, password);
+	public void update(String pw, String email) {
+		userDao.update(pw, email);
+		
+	}
+
+	@Override
+	public void updateacc(int id, String images, String fullname, String phone) {
+		userDao.updateacc(id, images, fullname, phone);
+		
+	}
+
+	@Override
+	public UserModel FindById(int id) {
+		return userDao.findById(id);
 	}
 
 }

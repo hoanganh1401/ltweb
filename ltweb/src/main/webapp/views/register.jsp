@@ -1,71 +1,112 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Registration Form</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-/* CSS styles for the registration form container */
-.registration-container {
-	width: 600px; /* Set the width of the container */
-	margin: 0 auto; /* Center the container horizontally */
-	padding: 20px; /* Add some padding inside the container */
-	border: 2px solid #ccc; /* Add a border */
-	border-radius: 10px; /* Add some border radius */
-	background-color: #f9f9f9; /* Background color */
-}
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-/* CSS styles for the heading */
-.registration-heading {
-	text-align: center; /* Center the heading text */
-}
+<div class="main">
+	<div class="container">
+		<!-- BEGIN CONTENT -->
+		<div class="col-md-9 col-sm-9">
+			<h1>Create an account</h1>
+			<div class="content-form-page">
+				<div class="row">
+					<c:if test="${alert !=null}">
+						<h3 class="alert alert danger">${alert}</h3>
+					</c:if>
+					<div class="col-md-7 col-sm-7">
+						<form action="/ltweb/register" method="post"
+							class="form-horizontal" role="form">
+							<fieldset>
+								<legend>Your personal details</legend>
+								<div class="form-group">
+									<label for="username" class="col-lg-4 control-label">User
+										Name <span class="require">*</span>
+									</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" id="username"
+											name="username">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="fullname" class="col-lg-4 control-label">Full
+										Name <span class="require">*</span>
+									</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" id="fullname"
+											name="fullname">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="col-lg-4 control-label">Email
+										<span class="require">*</span>
+									</label>
+									<div class="col-lg-8">
+										<input type="email" class="form-control" id="email"
+											name="email">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="phone" class="col-lg-4 control-label">Phone
+										<span class="require">*</span>
+									</label>
+									<div class="col-lg-8">
+										<input type="number" class="form-control" id="phone"
+											name="phone">
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend>Your password</legend>
+								<div class="form-group">
+									<label for="password" class="col-lg-4 control-label">Password
+										<span class="require">*</span>
+									</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" id="password"
+											name="password">
+									</div>
+								</div>
 
-/* CSS styles for input fields */
-.input-field {
-	width: 100%;
-	padding: 8px;
-	margin: 5px 0;
-	box-sizing: border-box;
-}
-</style>
-</head>
-<body>
+							</fieldset>
+							<!-- <fieldset>
+                      <legend>Newsletter</legend>
+                      <div class="checkbox form-group">
+                        <label>
+                          <div class="col-lg-4 col-sm-4">Singup for Newsletter</div>
+                          <div class="col-lg-8 col-sm-8">
+                            <input type="checkbox">
+                          </div>
+                        </label>
+                      </div>
+                    </fieldset>  !-->
+							<div class="row">
+								<div
+									class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
+									<button type="submit" class="btn btn-primary">Create
+										an account</button>
+									<button type="button" class="btn btn-default">Cancel</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-md-4 col-sm-4 pull-right">
+						<div class="form-info">
+							<h2>
+								<em>Important</em> Information
+							</h2>
+							<p>Lorem ipsum dolor ut sit ame dolore adipiscing elit, sed
+								sit nonumy nibh sed euismod ut laoreet dolore magna aliquarm
+								erat sit volutpat. Nostrud exerci tation ullamcorper suscipit
+								lobortis nisl aliquip commodo quat.</p>
 
-<div class="registration-container">
-    <h2 class="registration-heading">Register</h2>
-    
-    <form action="/ltweb/register" method="post">
-        <label for="fullname"><b>Full Name</b></label>
-        <input type="text" placeholder="Enter Full Name" name="fullname" id="fullname" class="input-field" required>
-        
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" id="username" class="input-field" required>
-        
-        <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" name="email" id="email" class="input-field" required>
+							<p>Duis autem vel eum iriure at dolor vulputate velit esse
+								vel molestie at dolore.</p>
 
-        <label for="phone"><b>Phone</b></label>
-        <input type="text" placeholder="Enter Phone Number" name="phone" id="phone" class="input-field" required>
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" id="password" class="input-field" required>
-
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" class="input-field" required>
-
-        <label for="images"><b>Image URL</b></label>
-        <input type="text" placeholder="Enter Image URL" name="images" id="images" class="input-field">
-        
-        <hr>
-        
-        <button type="submit" class="registerbtn btn btn-primary">Register</button>
-    </form>
-
-    <div class="container signin">
-        <p>Already have an account? <a href="/ltweb/login">Sign in</a>.</p>
-    </div>
+							<button type="button" class="btn btn-default">More
+								details</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END CONTENT -->
+	</div>
 </div>
-
-</body>
-</html>

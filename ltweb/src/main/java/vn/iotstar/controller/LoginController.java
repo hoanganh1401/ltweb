@@ -29,11 +29,12 @@ public class LoginController extends HttpServlet {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		String username = req.getParameter("uname").trim();
-		String password = req.getParameter("psw").trim();
+		// lay thaM SO TU VIEW
+		String username = req.getParameter("uname");
+		String password = req.getParameter("psw");
 		boolean isRememberMe = false;
 		String remember = req.getParameter("remember");
-
+		// kiem tra thaM SO
 		if ("on".equals(remember)) {
 			isRememberMe = true;
 		}
@@ -44,6 +45,7 @@ public class LoginController extends HttpServlet {
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 			return;
 		}
+		// xu ly bai toan
 
 		UserModel user = service.login(username, password);
 		if (user != null) {
@@ -58,14 +60,13 @@ public class LoginController extends HttpServlet {
 			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 		}
+
 	}
 
 	private void saveRemeberMe(HttpServletResponse resp, String username) {
-		// TODO Auto-generated method stub
-		Cookie cookie = new Cookie(Constant.COOKIE_REMEMBER,
-				username);
-				 cookie.setMaxAge(30*60);
-				 resp.addCookie(cookie);
-	}
+		Cookie cookie = new Cookie(Constant.COOKIE_REMEMBER, username);
+		cookie.setMaxAge(30 * 60);
+		resp.addCookie(cookie);
 
+	}
 }

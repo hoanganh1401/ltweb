@@ -5,8 +5,10 @@ import java.sql.Date;
 
 public class UserModel implements Serializable {
 
-	private static final long serialVersionUID = -37462121977501929L;
 	
+	
+
+	private static final long serialVersionUID = 6632144043145049098L;
 	private int id;
 	private String username;
 	private String password;
@@ -16,21 +18,15 @@ public class UserModel implements Serializable {
 	private String phone;
 	private int roleid;
 	private Date createDate;
+	
+	@Override
+	public String toString() {
+		return "UserModel [id=" + id + ", username=" + username + ", password=" + password + ", images=" + images
+				+ ", fullname=" + fullname + ", email=" + email + ", phone=" + phone + ", roleid=" + roleid
+				+ ", createDate=" + createDate + "]";
+	}
 	public UserModel() {
 		super();
-	}
-	public UserModel(int id, String username, String password, String images, String fullname, String email,
-			String phone, int roleid, Date createDate) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.images = images;
-		this.fullname = fullname;
-		this.email = email;
-		this.phone = phone;
-		this.roleid = roleid;
-		this.createDate = createDate;
 	}
 	public int getId() {
 		return id;
@@ -86,11 +82,30 @@ public class UserModel implements Serializable {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	@Override
-	public String toString() {
-		return "UserModel [id=" + id + ", username=" + username + ", password=" + password + ", images=" + images
-				+ ", fullname=" + fullname + ", email=" + email + ", phone=" + phone + ", roleid=" + roleid
-				+ ", createDate=" + createDate + "]";
+	public UserModel(int id, String username, String password, String images, String fullname, String email,
+			String phone, int roleid, Date createDate) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.images = images;
+		this.fullname = fullname;
+		this.email = email;
+		this.phone = phone;
+		this.roleid = roleid;
+		this.createDate = createDate;
+	}
+	public UserModel(String username, String password, String images, String fullname, String email, String phone,
+			int roleid, Date createDate) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.images = images;
+		this.fullname = fullname;
+		this.email = email;
+		this.phone = phone;
+		this.roleid = roleid;
+		this.createDate = createDate;
 	}
 	
 	
