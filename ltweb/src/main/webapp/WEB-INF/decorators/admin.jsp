@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	trang chu cua admin
-	<form action="/ltweb/user/home" method="post">
-		<div class="container">
-			<button type="logout">Logout</button>
-		</div>
-	</form>
+	<sitemesh:write property="body"/>
 </body>
 </html>

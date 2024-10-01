@@ -12,7 +12,7 @@
 						<h3 class="alert alert danger">${alert}</h3>
 					</c:if>
 					<div class="col-md-7 col-sm-7">
-						<form action="/ltweb/myaccount" method="post"
+						<form action="/lab02/myaccount" method="post"
 							class="form-horizontal" role="form" enctype="multipart/form-data">
 							<fieldset>
 								<legend>Your personal details</legend>
@@ -21,7 +21,9 @@
 								<div class="fileinput fileinput-new" data-provides="fileinput">
 									<div class="fileinput-new thumbnail"
 										style="width: 200px; height: 150px; margin-left: 170px;">
-										<img src="upload/${account.images}" alt="Ảnh mô tả" style="width: 100%; height: 100%;" />
+										<img
+											src="/lab02/upload/${account.images}"
+											alt="Ảnh mô tả" style="width: 100%; height: 100%;" />
 
 									</div>
 									<div class="form-group">

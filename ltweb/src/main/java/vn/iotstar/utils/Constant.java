@@ -13,4 +13,6 @@ public class Constant {
 
 	public static final int MAX_FILE_SIZE = 1024 * 1024 * 40;
 	public static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50;
+	
+	public static final String DIR = "D:\\upload";
 }
